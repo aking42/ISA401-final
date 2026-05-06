@@ -8,11 +8,13 @@
 .DS_Store
 Thumbs.db
 
-# Data folders (keep structure, ignore contents)
+# Data folders
+# - Keep raw + intermediate ignored (too large / reproducible from pipeline)
+# - Commit final + validation so teammates can use them directly
 data/raw/**
 data/intermediate/**
-data/final/**
-data/validation/**
+!data/final/**
+!data/validation/**
 
 # Allow placeholder files
 !data/**/.gitkeep
