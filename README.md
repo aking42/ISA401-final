@@ -20,14 +20,16 @@ Computed for each **state × year × degree_level × field_of_degree** cell:
 ### Data sources (3 sources; 2+ acquisition methods)
 This project is intentionally built from multiple sources and acquisition methods (per course requirements).
 
-#### Source A — ACS PUMS (Census; API)
+#### Source A — ACS PUMS (Census; FTP bulk files)
 - **What**: American Community Survey Public Use Microdata Sample (PUMS)
-- **How acquired**: Census API via `tidycensus::get_pums()`
+- **How acquired**: downloaded from the Census **FTP bulk file** directory (more reliable than the API when the API is busy)
 - **Why**: This is the main dataset used to compute employment/unemployment outcomes for the defined subgroup.
-- **Years**: 2019–2023 (uses **ACS 5-year PUMS** to ensure 2020 coverage)
+- **Years currently built**: **2023 only**, which corresponds to the **2019–2023** rolling 5-year window (ACS 5-year PUMS).
+  - You can expand to additional years by editing `YEARS` in `R/00_config.R` (each year is still a rolling 5-year window).
 - **Key variables used**:
   - `AGEP` (age), `SCH` (enrollment), `SCHL` (education), `ESR` (employment status),
     `FOD1P` (field of degree), `PWGTP` (person weight), plus state identifier (`ST`)
+- **Scope note (to keep downloads manageable)**: the pipeline currently uses a **25-state subset** (with **Ohio forced in**) controlled by `STATE_SAMPLE_N`, `FORCE_STATES`, and `STATE_SAMPLE_SEED` in `R/00_config.R`.
 
 #### Source B — BLS LAUS (BLS; API)
 - **What**: Local Area Unemployment Statistics (LAUS) overall unemployment rates
@@ -75,7 +77,6 @@ From the project root:
 Do **not** commit keys. Use user environment variables instead.
 
 ```powershell
-setx CENSUS_API_KEY "YOUR_CENSUS_KEY"
 setx BLS_API_KEY "YOUR_BLS_KEY"           # optional but recommended
 setx OPENAI_API_KEY "YOUR_OPENAI_KEY"     # optional (enables LLM PDF extraction)
 ```

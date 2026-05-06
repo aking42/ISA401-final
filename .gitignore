@@ -1,0 +1,19 @@
+# R / RStudio
+.Rhistory
+.RData
+.Rproj.user/
+.Renviron
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Data folders (keep structure, ignore contents)
+data/raw/**
+data/intermediate/**
+data/final/**
+data/validation/**
+
+# Allow placeholder files
+!data/**/.gitkeep
+
