@@ -36,8 +36,8 @@
 **Question:** Do “placement rates” from school reports align with macro labor outcomes?\n
 - Use `data/final/first_destination.parquet` as a second data source.\n
 - Keep this panel clearly labeled **Supplemental (Ohio schools)**.\n
-- If you ran the LLM extraction, build:\n
-  - bar chart: `field_category` vs `placement_rate` (and/or `continuing_ed_rate`) faceted by `school`.\n
+- Build:\n
+  - bar chart: `school` vs `placement_rate` (and/or `continuing_ed_rate`).\n
 
 ### Publishing checklist
 - First story point includes: **Team # and member names**.\n

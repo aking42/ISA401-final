@@ -36,12 +36,10 @@ This project is intentionally built from multiple sources and acquisition method
 - **How acquired**: BLS public API (`https://api.bls.gov/publicAPI/v2/timeseries/data/`)
 - **Why**: Provides macro labor-market context and a benchmark trend line alongside the subgroup measures.
 
-#### Source C — First Destination Reports (PDF; LLM extraction)
+#### Source C — First Destination Reports (PDF; structured extraction)
 - **What**: First Destination / career outcomes reports for 1–3 Ohio schools (PDFs)
 - **How acquired**: PDFs downloaded manually into the repo’s `data/raw/first_destination/` folder
-- **How structured**:
-  - Preferred: **LLM-based structured extraction** (requires `OPENAI_API_KEY`)
-  - Fallback: regex-based coarse extraction if no LLM key is provided
+- **How structured**: structured extraction from PDF text into a tidy table (report-level metrics with best-effort parsing)
 - **Why**: Adds a “placement rate / continuing education” lens that is not directly measured in ACS/BLS.
 
 ### Repository workflow (reproducible in R)
@@ -78,7 +76,6 @@ Do **not** commit keys. Use user environment variables instead.
 
 ```powershell
 setx BLS_API_KEY "YOUR_BLS_KEY"           # optional but recommended
-setx OPENAI_API_KEY "YOUR_OPENAI_KEY"     # optional (enables LLM PDF extraction)
 ```
 
 Restart Cursor (or open a fresh terminal) after `setx`.
