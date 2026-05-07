@@ -17,13 +17,13 @@ field_category_from_fod_label <- function(fod_label) {
     x == "" ~ "Unknown/NA",
     stringr::str_detect(x, "computer|information|software|data science|statistics|math|mathematics") ~ "CS/Math/Stats",
     stringr::str_detect(x, "engineering") ~ "Engineering",
-    stringr::str_detect(x, "biology|biological|chemistry|physics|geology|earth science") ~ "NaturalSciences",
-    stringr::str_detect(x, "health|nursing|pharmacy|medicine|public health") ~ "Health",
-    stringr::str_detect(x, "business|accounting|finance|economics|marketing|management") ~ "Business/Econ",
+    stringr::str_detect(x, "biology|biological|chemistry|physics|geology|earth science|Environment") ~ "NaturalSciences",
+    stringr::str_detect(x, "health|nursing|pharmacy|medicine|public health|Fitness|Therapy|Bio") ~ "Health",
+    stringr::str_detect(x, "business|accounting|finance|economics|marketing|management|Logistics|Acturial") ~ "Business/Econ",
     stringr::str_detect(x, "education|teaching") ~ "Education",
     stringr::str_detect(x, "psychology|sociology|political|international|anthropology|social") ~ "SocialSciences",
-    stringr::str_detect(x, "english|history|philosophy|religion|languages|literature|humanities") ~ "Humanities",
-    stringr::str_detect(x, "art|music|theatre|film|design|visual") ~ "Arts/Design",
+    stringr::str_detect(x, "english|history|philosophy|religion|languages|literature|humanities|Journalism|Media|Archeology") ~ "Humanities",
+    stringr::str_detect(x, "art|music|theatre|film|design|visual|Architecture|Drama|Arts") ~ "Arts/Design",
     TRUE ~ "Other"
   )
 }
